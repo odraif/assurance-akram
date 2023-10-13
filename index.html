@@ -95,18 +95,19 @@
       </div>
     </div>
     <div class="form-container hide-form">
-      <Form name="contact" netlify>
+      <Form name="Contact" netlify>
         <div class="logo">
           <img src="./imgs/logo-v2.webp" alt="">
         </div>
         <div class="inputs">
           <div class="input-container">
-          <input placeholder="Nom de contact" class="input-field" type="text">
+          <input name="Contact_Name" required placeholder="Nom de contact" class="input-field" type="text">
             <label for="input-field" class="input-label">Nom de contact</label>
             <span class="input-highlight"></span>
           </div>
           <div class="input-container">
-            <select name="" id="">
+            <select name="secteur" id="" required>
+              <option value="" selected>Choisir votre secteur</option>
               <option value="Batiment">Batiment</option>
               <option value="Hotellerie">Hotellerie</option>
               <option value="enseigement">enseigement</option>
@@ -114,12 +115,12 @@
             </select>
           </div>
           <div class="input-container">
-            <input placeholder="La ville" class="input-field" type="text">
+            <input name="City" required placeholder="La ville" class="input-field" type="text">
             <label for="input-field" class="input-label">La ville</label>
             <span class="input-highlight"></span>
           </div>
           <div class="input-container">
-            <input placeholder="Numéro de téléphone" class="input-field" type="text">
+            <input name="Phone_Number" required placeholder="Numéro de téléphone" class="input-field" type="text">
             <label for="input-field" class="input-label">Numéro de téléphone</label>
             <span class="input-highlight"></span>
           </div>
@@ -187,7 +188,7 @@
 
   //show maps
   function maps() {
-    location.href = 'https://maps.app.goo.gl/EDgLByNpkdwnnkTM7'
+    location.href = 'https://maps.app.goo.gl/qAChTtJSk2SqefWW6'
   }
 
   //show form in mobile view
