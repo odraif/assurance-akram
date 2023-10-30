@@ -95,7 +95,13 @@
       </div>
     </div>
     <div class="form-container hide-form">
-      <Form name="Contact" netlify>
+            <div id="check" style="color:#fff">
+          Nous vous remercie de nous contacter!
+        </div>
+        <div id="remove" style="color:#fff">
+          Votre formulaire n'été envoyer.
+        </div>
+            <form action="controller/formHandler.php" name="contact" method="POST" id="form"  onsubmit="submitContact(this)">
         <div class="logo">
           <img src="./imgs/logo-v2.webp" alt="">
         </div>
@@ -106,13 +112,9 @@
             <span class="input-highlight"></span>
           </div>
           <div class="input-container">
-            <select name="secteur" id="" required>
-              <option value="" selected>Choisir votre secteur</option>
-              <option value="Batiment">Batiment</option>
-              <option value="Hotellerie">Hotellerie</option>
-              <option value="enseigement">enseigement</option>
-              <option value="services">services</option>
-            </select>
+          <input name="secteur" required placeholder="Votre secteur d'activité" class="input-field" type="text">
+            <label for="input-field" class="input-label">Votre secteur d'activité</label>
+            <span class="input-highlight"></span>
           </div>
           <div class="input-container">
             <input name="City" required placeholder="La ville" class="input-field" type="text">
@@ -208,4 +210,41 @@
       formContainer.classList.add("hide-form");
     }
   })
+
+    var form = document.querySelector("#form");
+        var check = document.querySelector("#check");
+        var remove = document.querySelector("#remove")
+
+        check.style.display = "none"
+        remove.style.display = "none"
+
+  function submitContact(form) {
+            event.preventDefault();
+
+            var formData = new FormData(form);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('POST', "controller/formHandler.php");
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    form.style.display = "none"
+                    check.style.display = "block"
+                    setTimeout(() => {
+                      contactModal.style.display = 'none';
+                    }, 3000);
+                } else {
+                    remove.style.display = "block"
+                    form.style.display = "none"
+                    setTimeout(() => {
+                        remove.style.display = "none"
+                        form.style.display = "block"
+                    }, 3000);
+
+                }
+            };
+
+            xhr.send(formData);
+        }
 </script>
